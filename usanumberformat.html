@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>USA Number Format</title>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#number").keyup(function (a) {
+				$("#number").keyup(function () {
+					var l = this.value,
+						h = this.value.replace(/\D/g, "");
+					if (10 < h.length) this.value = "(" + h.substr(0, 3) + ") " + h.substr(3, 3) + "-" + h.substr(6, 4), newVal = "(";
+					else {
+						newVal = "(";
+						for (i = 0; 2 > i; i++) 0 == i ? 3 < h.length && (newVal += h.substr(0, 3) + ") ", h = h.substr(3)) : 3 < h.length && (newVal += h.substr(0, 3) + "-", h = h.substr(3));
+						this.value = newVal += h;
+						8 == a.keyCode && "(" == l && (this.value = "")
+					} - 1 !== $.inArray(a.keyCode, [46, 8, 9, 27, 86, 13, 110]) || 65 == a.keyCode && !0 ===
+						a.ctrlKey || 35 <= a.keyCode && 39 >= a.keyCode || (a.shiftKey || 48 > a.keyCode || 57 < a.keyCode) && (96 > a.keyCode || 105 < a.keyCode) && a.preventDefault()
+				})
+			})
+		});
+		$(document).ready(function () {
+			$("#number").keyup(function (a) {
+				var l = this.value.replace(/\D/g, "");
+				// Checkif number starts with 0. If yes display error message.
+				if (48 == a.keyCode && 10 > l || 96 == a.keyCode && 10 > l) document.getElementById("temp_message").innerHTML = "Please check your number.<br>It can not start with 0", $("#temp_message").show(), setTimeout(function () {
+					$("#temp_message").hide()
+				}, 4E3)
+			})
+		});
+	</script>
+	</head>
+	<body>
+		<form>
+			<label for="number">Enter Mobile Number : </label><input type="text" id="number" placeholder="eg: (703) 223-381">
+			<div id="temp_message"></div>
+		</form>
+	</body>
+</html>

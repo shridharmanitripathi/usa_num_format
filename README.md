@@ -1,2 +1,4 @@
 # usa_num_format
-Enter/read Mobile numbers in US format
+
+Read Mobile number input from user in USA format (XXX) XXX-XXX.
+   
